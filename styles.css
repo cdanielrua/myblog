@@ -1,0 +1,95 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Barra de navegación */
+header {
+    background-color: #000;
+    color: white;
+    padding: 15px 30px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.navbar nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #ccc;
+}
+
+/* Sección de artículos */
+.articles-section {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 30px;
+    justify-content: center;
+}
+
+.article-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+.article-card img {
+    width: 100%;
+    height: auto;
+}
+
+.article-card h3 {
+    margin: 15px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.article-card p {
+    margin: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.article-card span {
+    display: block;
+    margin: 15px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
