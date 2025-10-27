@@ -1,0 +1,35 @@
+
+/* Simple, minimal and responsive blog CSS */
+:root{
+  --bg:#0f1720; --card:#0b1220; --text:#e6eef8; --muted:#9fb0c6; --accent:#9b5cf6;
+  --maxw:980px;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#0b1220);color:var(--text);line-height:1.5}
+.site-header{padding:24px 20px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.banner{max-width:100%;height:auto;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
+.nav{display:flex;gap:16px;align-items:center}
+.nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:6px}
+.nav a:hover{background:rgba(255,255,255,0.02);color:var(--text)}
+
+.container{max-width:var(--maxw);margin:26px auto;padding:0 18px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;margin-bottom:18px;box-shadow:0 6px 20px rgba(11,17,24,0.6)}
+
+.skills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:12px 0}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.project{background:transparent;padding:12px;border-radius:8px}
+.project h3 a{color:var(--text);text-decoration:none}
+.post{margin-bottom:12px}
+
+.site-footer{padding:22px 18px;text-align:center;color:var(--muted);font-size:14px}
+.small a{color:var(--muted);text-decoration:none}
+form label{display:block;margin-bottom:8px}
+input[type="text"],input[type="email"],textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+button{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;border:0;cursor:pointer}
+button:hover{opacity:0.95}
+
+@media (min-width:900px){
+  .site-header{flex-direction:row;justify-content:space-between;padding:30px 40px}
+  .banner{max-width:640px}
+}

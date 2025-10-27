@@ -1,49 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Portafolio</title>
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <script defer src="assets/js/main.js"></script>
-    <script defer src="assets/js/scripts.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daniel Rua - Blog & Portfolio</title>
+  <meta name="description" content="Blog y portfolio de Daniel Rua — Ingeniero Electrónico, IA, reconocimiento de patrones y desarrollo de software.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header id="header"></header>
+  <header class="site-header">
+    <img class="banner" src="assets/banner.svg" alt="Banner Daniel Rua">
+    <nav class="nav">
+      <a href="#about">Sobre mí</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#posts">Publicaciones</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
 
-    <main>
-        <section>
-            <h2 id="titulo-seccion">Bienvenido a mi Portafolio</h2>
-            <p id="descripcion-seccion">
-                
-            </p>
-        </section>
+  <main class="container">
+    <section id="about" class="card">
+      <h2>Sobre mí</h2>
+      <p>Soy <strong>Daniel Rua</strong>, Ingeniero Electrónico con enfoque en <em>reconocimiento de patrones, inteligencia artificial y aprendizaje autónomo</em>. Me apasiona la programación eficiente tanto a bajo nivel (C/C++) como en alto nivel (Python), y la construcción de soluciones que integren señales, datos y modelos.</p>
+      <ul class="skills">
+        <li>🔧 Python, C, C++</li>
+        <li>🧠 Machine Learning, Deep Learning</li>
+        <li>⚙️ Docker, Entornos virtuales, Backend</li>
+        <li>🌐 HTML, CSS, JavaScript</li>
+      </ul>
+      <p>Visita mi <a href="https://www.linkedin.com/in/daniel-r-3a8736a7" target="_blank">LinkedIn</a> o mi sitio personal <a href="https://danielrua.com" target="_blank">danielrua.com</a>.</p>
+    </section>
 
-        <section class="proyectos">
-            <a href="proyecto1.html" class="proyecto">
-                <img src="assets/img/proyecto1.jpg" alt="Proyecto 1">
-                <h3>Proyecto 1</h3>
-            </a>
-            <a href="proyecto2.html" class="proyecto">
-                <img src="assets/img/proyecto2.jpg" alt="Proyecto 2">
-                <h3>Proyecto 2</h3>
-            </a>
-            <a href="proyecto3.html" class="proyecto">
-                <img src="assets/img/proyecto3.jpg" alt="Proyecto 3">
-                <h3>Proyecto 3</h3>
-            </a>
-            <a href="proyecto4.html" class="proyecto">
-                <img src="assets/img/proyecto4.jpg" alt="Proyecto 4">
-                <h3>Proyecto 4</h3>
-            </a>
-        </section>
-        
+    <section id="projects" class="card">
+      <h2>Proyectos destacados</h2>
+      <div class="projects-grid">
+        <article class="project">
+          <h3><a href="https://github.com/cdanielrua/challengeDecryptImageBMP.git" target="_blank">Decrypt Image BMP</a></h3>
+          <p>Desafío de criptografía aplicada a imágenes BMP — análisis y solución paso a paso con código optimizado.</p>
+        </article>
+        <article class="project">
+          <h3><a href="https://github.com/cdanielrua/SamplerWave.git" target="_blank">Sampler Wave</a></h3>
+          <p>Procesamiento y muestreo de señales de audio, análisis espectral y efectos de cuantización.</p>
+        </article>
+        <article class="project">
+          <h3><a href="https://github.com/cdanielrua/cath-the-dot.git" target="_blank">Catch the Dot</a></h3>
+          <p>Juego en Python que combina GUI simple con lógica de interacción y temporización.</p>
+        </article>
+        <article class="project">
+          <h3><a href="https://github.com/cdanielrua/EnergyMatrixAnalysis_BRA_COL_USA.git" target="_blank">Energy Matrix Analysis</a></h3>
+          <p>Análisis comparativo de matrices de energía entre países — visualización y extracción de insights.</p>
+        </article>
+      </div>
+    </section>
 
-        
-    </main>
+    <section id="posts" class="card">
+      <h2>Últimas publicaciones</h2>
+      <p>En esta sección agregarás posts técnicos, tutoriales y análisis. Ya incluí dos entradas de ejemplo para que las amplíes o sustituyas:</p>
+      <article class="post">
+        <h3>Procesamiento de audio: muestreo y aliasing</h3>
+        <p>Resumen: conceptos prácticos sobre muestreo, aliasing y ejemplos en Python con scipy.signal.</p>
+        <a href="posts/sample-post-1.html">Leer más →</a>
+      </article>
+      <article class="post">
+        <h3>Optimización en C para procesamiento en tiempo real</h3>
+        <p>Resumen: técnicas para reducir latencia y uso de memoria en algoritmos de señal.</p>
+        <a href="posts/sample-post-2.html">Leer más →</a>
+      </article>
+    </section>
 
-    <footer id="footer"></footer>
+    <section id="contact" class="card">
+      <h2>Contacto</h2>
+      <p>Si quieres trabajar conmigo, colaborar en investigación o simplemente saludar:</p>
+      <form id="contactForm" action="mailto:hello@danielrua.com" method="post" enctype="text/plain">
+        <label>Nombre
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Mensaje
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+      <p class="note">También puedes escribir directamente a <a href="mailto:hello@danielrua.com">hello@danielrua.com</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© sandbox • Daniel Rua — Ingeniero Electrónico · IA</p>
+    <p class="small"><a href="https://github.com/cdanielrua" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/daniel-r-3a8736a7" target="_blank">LinkedIn</a></p>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
