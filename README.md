@@ -16,9 +16,4 @@ Este es un sitio estático modular en **HTML/CSS/JS** pensado para desplegar en 
 4. Sube los archivos al administrador de archivos de SiteGround o mediante FTP al folder público (ej. `public_html`).
 5. Asegúrate de configurar tu dominio en SiteGround; el sitio es completamente estático.
 
-## Notas
-- Si necesitas integrar un formulario real que envíe correos sin depender de `mailto:`, puedo añadir integración con Formspree o Netlify Forms.
-- Si quieres que haga un merge automático con tu repo original, sube un `.zip` o el contenido y lo fusiono.
 
----
-Generado automáticamente: contenido base completado y listo para personalizar.
