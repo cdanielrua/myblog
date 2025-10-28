@@ -1,1 +1,82 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Muestreo y aliasing</title><link rel="stylesheet" href="../css/style.css"></head><body><main class="container card"><h1>Procesamiento de audio: muestreo y aliasing</h1><p>En esta entrada exploramos el efecto del muestreo y el aliasing en señales de audio. Incluye código de ejemplo usando <code>scipy.signal.resample</code> y visualizaciones con <code>matplotlib</code>. (Agregar código y gráficos relevantes).</p><a href="../index.html">Volver</a></main></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muestreo y aliasing</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <meta name="description" content="Análisis del muestreo y el aliasing en señales de audio usando Python, SciPy y Matplotlib.">
+</head>
+
+<body>
+  <main class="container card">
+    <h1>Procesamiento de audio: muestreo y aliasing</h1>
+
+    <p>En esta entrada exploramos el efecto del <strong>muestreo</strong> y el <strong>aliasing</strong> en señales de audio. 
+    Veremos cómo la frecuencia de muestreo influye en la calidad del sonido y cómo el submuestreo puede provocar la pérdida o distorsión de información en la señal.</p>
+
+    <h2>📉 ¿Qué es el muestreo?</h2>
+    <p>El <em>muestreo</em> consiste en tomar muestras discretas de una señal continua en el tiempo. 
+    Según el <strong>teorema de Nyquist-Shannon</strong>, la frecuencia de muestreo debe ser al menos el doble de la frecuencia máxima presente en la señal original para evitar aliasing.</p>
+
+    <pre><code class="language-python">
+import numpy as np
+from scipy.signal import resample
+import matplotlib.pyplot as plt
+
+# Cargar señal
+fs = 8000  # Frecuencia original
+t = np.linspace(0, 1, fs)
+signal = np.sin(2 * np.pi * 1000 * t)  # Señal de 1 kHz
+
+# Submuestreo a 2000 Hz
+num_samples = int(len(t) * 2000 / fs)
+resampled = resample(signal, num_samples)
+
+plt.figure(figsize=(8, 4))
+plt.plot(t, signal, label="Original (8 kHz)")
+plt.plot(np.linspace(0, 1, num_samples), resampled, label="Muestreada (2 kHz)")
+plt.legend()
+plt.xlabel("Tiempo [s]")
+plt.ylabel("Amplitud")
+plt.title("Efecto del muestreo")
+plt.show()
+    </code></pre>
+
+    <h2>🎧 Efecto del aliasing</h2>
+    <p>El aliasing ocurre cuando una señal contiene componentes de frecuencia mayores que la mitad de la frecuencia de muestreo. 
+    Estas frecuencias se reflejan hacia el rango audible, generando sonidos falsos o distorsionados.</p>
+
+    <figure>
+      <img src="../assets/aliasing_example.png" alt="Ejemplo visual de aliasing en señales de audio" style="width:100%;max-width:600px;border-radius:10px;">
+      <figcaption>Ejemplo del efecto del aliasing en una señal sinusoidal.</figcaption>
+    </figure>
+
+    <h2>📊 Visualización espectral</h2>
+    <p>Podemos visualizar el efecto del aliasing usando un espectrograma:</p>
+
+    <pre><code class="language-python">
+from scipy.signal import spectrogram
+
+f, t, Sxx = spectrogram(signal, fs)
+plt.pcolormesh(t, f, 10*np.log10(Sxx))
+plt.title("Espectrograma de la señal original")
+plt.ylabel("Frecuencia [Hz]")
+plt.xlabel("Tiempo [s]")
+plt.show()
+    </code></pre>
+
+    <p>Al reducir la frecuencia de muestreo, el espectrograma muestra cómo se pierden las componentes altas, o aparecen nuevas frecuencias falsas.</p>
+
+    <a href="../index.html" class="button">⬅ Volver al inicio</a>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 • Daniel Rua — Ingeniero Electrónico · IA</p>
+    <p>
+      <a href="https://github.com/cdanielrua" target="_blank">GitHub</a> •
+      <a href="https://www.linkedin.com/in/danielrua/" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+</body>
+</html>

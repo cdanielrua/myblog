@@ -1,1 +1,84 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Optimización en C</title><link rel="stylesheet" href="../css/style.css"></head><body><main class="container card"><h1>Optimización en C para procesamiento en tiempo real</h1><p>En esta entrada mostraremos patrones de optimización: gestión de memoria, uso de buffers circulares y técnicas de inlining. (Agregar ejemplos concretos en C).</p><a href="../index.html">Volver</a></main></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Optimización en C</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <meta name="description" content="Guía de optimización en lenguaje C para procesamiento en tiempo real: memoria, buffers circulares e inlining.">
+</head>
+
+<body>
+  <main class="container card">
+    <h1>Optimización en C para procesamiento en tiempo real</h1>
+
+    <p>En esta entrada exploraremos algunas estrategias comunes para optimizar código en <strong>C</strong> cuando se requiere <strong>procesamiento en tiempo real</strong>. Estas técnicas son aplicables en proyectos de audio digital, sistemas embebidos o control de señales.</p>
+
+    <h2>⚙️ Gestión eficiente de memoria</h2>
+    <p>El acceso a memoria puede ser un cuello de botella en sistemas embebidos. Siempre que sea posible, evita asignaciones dinámicas dentro de bucles o funciones críticas. 
+    Utiliza <code>static</code> o buffers globales para reducir la sobrecarga del <code>malloc</code> y <code>free</code>.</p>
+
+    <pre><code class="language-c">
+// Ejemplo: evitar malloc en bucle de tiempo real
+#define BUFFER_SIZE 256
+
+void processAudio(float *input, float *output) {
+    static float buffer[BUFFER_SIZE]; // memoria persistente en stack
+    for (int i = 0; i < BUFFER_SIZE; i++) {
+        output[i] = buffer[i] = 0.8f * input[i]; // procesamiento simple
+    }
+}
+    </code></pre>
+
+    <h2>🔁 Uso de buffers circulares</h2>
+    <p>Los buffers circulares son útiles para almacenar flujos de datos continuos (por ejemplo, muestras de audio) sin necesidad de mover memoria constantemente.</p>
+
+    <pre><code class="language-c">
+// Ejemplo de buffer circular
+#define SIZE 1024
+float circularBuffer[SIZE];
+int writeIndex = 0;
+
+void addSample(float sample) {
+    circularBuffer[writeIndex] = sample;
+    writeIndex = (writeIndex + 1) % SIZE; // vuelve al inicio automáticamente
+}
+    </code></pre>
+
+    <h2>⚡ Inlining y macros</h2>
+    <p>Las funciones pequeñas llamadas frecuentemente pueden declararse como <code>inline</code> para evitar la sobrecarga de llamada a función. 
+    Esto mejora la velocidad en bucles intensivos, aunque puede aumentar el tamaño del binario.</p>
+
+    <pre><code class="language-c">
+// Ejemplo de función inline
+static inline float fastMultiply(float a, float b) {
+    return a * b;
+}
+
+void process(float *in, float *out, int N) {
+    for (int i = 0; i < N; i++) {
+        out[i] = fastMultiply(in[i], 0.5f);
+    }
+}
+    </code></pre>
+
+    <h2>🧠 Consideraciones finales</h2>
+    <ul>
+      <li>Evita funciones costosas dentro del bucle principal (<code>printf</code>, <code>malloc</code>, etc.).</li>
+      <li>Usa variables <code>volatile</code> solo cuando realmente se compartan entre interrupciones o hilos.</li>
+      <li>Analiza el rendimiento con herramientas como <code>gprof</code> o <code>perf</code>.</li>
+      <li>Compila con optimizaciones del compilador: <code>-O2</code> o <code>-O3</code>.</li>
+    </ul>
+
+    <a href="../index.html" class="button">⬅ Volver al inicio</a>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 • Daniel Rua — Ingeniero Electrónico · IA</p>
+    <p>
+      <a href="https://github.com/cdanielrua" target="_blank">GitHub</a> •
+      <a href="https://www.linkedin.com/in/danielrua/" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+</body>
+</html>
