@@ -1,6 +1,6 @@
 # Blog - Daniel Rua
 
-Este es un sitio estático modular en **HTML/CSS/JS** pensado para desplegar en SiteGround (o cualquier hosting que sirva archivos estáticos).
+Este es un sitio estático modular en **HTML/CSS/JS** pensado para desplegar en github-pages (o cualquier hosting que sirva archivos estáticos).
 
 ## Qué incluye
 - `index.html` — Página principal con secciones: Sobre mí, Proyectos, Publicaciones y Contacto.
